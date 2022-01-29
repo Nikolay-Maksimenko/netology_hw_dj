@@ -24,5 +24,5 @@ def show_product(request, slug):
         phones_obj = Phone.objects.filter(slug=slug)
         phone = [{'id': c.id, 'name': c.name, 'price': c.price, 'image': c.image, 'release_date': c.release_date, 'lte_exists': c.lte_exists, 'slug': c.slug} for c in phones_obj]
     template = 'product.html'
-    context = {'phone': phone[0]}
+    context = {'phone': phones_obj[0]}
     return render(request, template, context)
