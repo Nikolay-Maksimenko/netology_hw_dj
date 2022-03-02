@@ -3,7 +3,6 @@ from django.urls import reverse
 from students.models import Course
 from tests.conftest import course_factory, student_factory
 
-
 @pytest.mark.django_db
 def test_course_retrieve(client, course_factory):
     course_factory(_quantity=10)
@@ -47,9 +46,9 @@ def test_course_filter_name(client, course_factory):
 @pytest.mark.django_db
 def test_course_create(client, student_factory):
     url = reverse("courses-list")
-    student_factory(_quantity=5)
+    students = student_factory(_quantity=5)
     data = {'name': 'python',
-            'stundents': []}
+            'stundents': students}
     response = client.post(url, data)
     assert response.status_code == 201
 
